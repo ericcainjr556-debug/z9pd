@@ -1,198 +1,209 @@
 <!DOCTYPE html>
-<!-- saved from url=(0027)https://html.cafe/x703442ed -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>pixie</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pixie</title>
 
-        body {
-            margin: 0;
-            padding: 0;
-            background: #1a0d0d url('https://cdn.discordapp.com/attachments/1474143370346496111/1486149553748181196/T_LS-FNBR-KetArt.webp?ex=69c47420&is=69c322a0&hm=e56c950b48adf92aab86fff1cabb5cf1aa6aaf6e53a99b682be3dd727d7c066b&') center/cover no-repeat fixed;
-            color: #ff3366;
-            font-family: 'Roboto Mono', monospace;
-            overflow: hidden;
-            height: 100vh;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
-        /* Intro Screen */
-        #intro {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: rgba(26, 13, 13, 0.75); /* Dark overlay so text is readable */
-            z-index: 10;
-            transition: opacity 1.2s ease;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: url('https://cdn.discordapp.com/attachments/1474143370346496111/1486149553748181196/T_LS-FNBR-KetArt.webp') center/cover no-repeat fixed;
+    color: white;
+    overflow: hidden;
+}
 
-        .pfp {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            border: 8px solid #ff3366;
-            box-shadow: 0 0 50px #ff0000;
-            margin-bottom: 40px;
-        }
+/* DARK OVERLAY */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    backdrop-filter: blur(6px);
+}
 
-        .username {
-            font-size: 42px;
-            color: #ff6699;
-            margin-bottom: 18px;
-            letter-spacing: 1px;
-        }
+/* INTRO */
+#intro {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    animation: fadeIn 1s ease;
+}
 
-        .status {
-            font-size: 18px;
-            color: #ff99bb;
-            margin-bottom: 80px;
-            letter-spacing: 2px;
-        }
+.pfp {
+    width: 170px;
+    height: 170px;
+    border-radius: 50%;
+    border: 4px solid #ff4d88;
+    box-shadow: 0 0 40px #ff4d88;
+    margin-bottom: 30px;
+}
 
-        .enter-btn {
-            padding: 22px 90px;
-            border: 5px solid #00ff99;
-            color: #00ff99;
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.4s;
-            letter-spacing: 2px;
-        }
+.username {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
 
-        .enter-btn:hover {
-            background: #00ff99;
-            color: #1a0d0d;
-            box-shadow: 0 0 40px #00ff99;
-        }
+.status {
+    opacity: 0.7;
+    margin-bottom: 50px;
+}
 
-        /* Main Page */
-        #main {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            padding: 60px 40px;
-            background: rgba(26, 13, 13, 0.85); /* Dark overlay for readability */
-            overflow-y: auto;
-        }
+.enter-btn {
+    padding: 14px 60px;
+    border-radius: 12px;
+    border: 2px solid #00ffcc;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-        .main-pfp {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            border: 6px solid #ff3366;
-            margin-bottom: 35px;
-        }
+.enter-btn:hover {
+    background: #00ffcc;
+    color: black;
+    box-shadow: 0 0 25px #00ffcc;
+}
 
-        .main-username {
-            font-size: 34px;
-            color: #ff6699;
-            margin-bottom: 40px;
-            letter-spacing: 2px;
-        }
+/* MAIN */
+#main {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+}
 
-        .bio {
-            max-width: 620px;
-            text-align: center;
-            font-size: 16.5px;
-            line-height: 2.1;
-            color: #ff99bb;
-            letter-spacing: 0.8px;
-            margin-bottom: 70px;
-        }
+/* CARD */
+.card {
+    background: rgba(20,20,20,0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    animation: fadeUp 0.8s ease;
+}
 
-        .music-btn {
-            padding: 16px 60px;
-            border: 4px solid #ff3366;
-            color: #ff3366;
-            font-size: 17px;
-            cursor: pointer;
-            background: transparent;
-            transition: all 0.3s;
-            letter-spacing: 1.5px;
-        }
+.main-pfp {
+    width: 120px;
+    border-radius: 50%;
+    border: 3px solid #ff4d88;
+    margin-bottom: 20px;
+}
 
-        .music-btn:hover {
-            background: #ff3366;
-            color: #1a0d0d;
-        }
-    </style>
+.main-username {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.bio {
+    font-size: 14px;
+    opacity: 0.8;
+    line-height: 1.8;
+    margin-bottom: 25px;
+}
+
+/* BUTTON */
+.music-btn {
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid #ff4d88;
+    background: transparent;
+    color: #ff4d88;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.music-btn:hover {
+    background: #ff4d88;
+    color: black;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Intro Screen -->
-    <div id="intro" style="opacity: 0; display: none;">
-        <img src="./pixie_files/57841d6ddddd55644040fe6bc0fb1ea4.webp" alt="pixie" class="pfp">
-        <div class="username">pixie</div>
-        <div class="status">z9pd</div>
-        <div class="enter-btn" id="enterBtn">Click to Enter</div>
-    </div>
+<!-- INTRO -->
+<div id="intro">
+    <img src="https://i.imgur.com/8Km9tLL.png" class="pfp">
+    <div class="username">pixie</div>
+    <div class="status">z9pd</div>
+    <div class="enter-btn" id="enterBtn">Enter</div>
+</div>
 
-    <!-- Main Bio Page -->
-    <div id="main" style="display: flex;">
-        <img src="./pixie_files/57841d6ddddd55644040fe6bc0fb1ea4.webp" alt="pixie" class="main-pfp">
+<!-- MAIN -->
+<div id="main">
+    <div class="card">
+        <img src="https://i.imgur.com/8Km9tLL.png" class="main-pfp">
         <div class="main-username">@z9pd</div>
 
         <div class="bio">
             16 in 8 months<br>
             Alana 💖<br>
-            best friends - Ires, Kdot, Momkey, PalmTree, Koda, Gweg
-            developer/modder<br>
+            best friends - Ires, Kdot, Momkey, PalmTree, Koda, Gweg<br>
+            developer/modder
         </div>
 
-        <button class="music-btn" id="musicBtn" style="border-color: rgb(0, 255, 153); color: rgb(0, 255, 153);">⏸ boyfriend - aeter</button>
-        <audio id="audioPlayer" loop="" src="https://cdn.discordapp.com/attachments/1485354899272372364/1486146593077067826/boyfriend.mp3?ex=69c4715f&amp;is=69c31fdf&amp;hm=9da891662bce36c0e4152bd7f12ac4235c5854e943392e43fa376dcd7a507865&amp;"></audio>
+        <button class="music-btn" id="musicBtn">⏸ boyfriend - aeter</button>
+        <audio id="audioPlayer" loop></audio>
     </div>
+</div>
 
-    <script>
-        const enterBtn = document.getElementById('enterBtn');
-        const intro = document.getElementById('intro');
-        const main = document.getElementById('main');
-        const musicBtn = document.getElementById('musicBtn');
-        const audio = document.getElementById('audioPlayer');
+<script>
+const enterBtn = document.getElementById('enterBtn');
+const intro = document.getElementById('intro');
+const main = document.getElementById('main');
+const musicBtn = document.getElementById('musicBtn');
+const audio = document.getElementById('audioPlayer');
 
-        let isPlaying = true;
+let isPlaying = true;
 
-        // Your music link
-        audio.src = "https://cdn.discordapp.com/attachments/1485354899272372364/1486146593077067826/boyfriend.mp3?ex=69c4715f&is=69c31fdf&hm=9da891662bce36c0e4152bd7f12ac4235c5854e943392e43fa376dcd7a507865&";
+audio.src = "https://cdn.discordapp.com/attachments/1485354899272372364/1486146593077067826/boyfriend.mp3";
 
-        enterBtn.addEventListener('click', () => {
-            intro.style.opacity = '0';
-            setTimeout(() => {
-                intro.style.display = 'none';
-                main.style.display = 'flex';
-                
-                // Auto play music when entering
-                audio.play().catch(err => {
-                    console.log("Autoplay blocked by browser");
-                });
-            }, 1200);
-        });
+enterBtn.onclick = () => {
+    intro.style.display = "none";
+    main.style.display = "flex";
+    audio.play().catch(() => {});
+};
 
-        musicBtn.addEventListener('click', () => {
-            if (isPlaying) {
-                audio.pause();
-                musicBtn.innerHTML = "▶ boyfriend - aeter";
-                musicBtn.style.borderColor = "#ff3366";
-                musicBtn.style.color = "#ff3366";
-            } else {
-                audio.play();
-                musicBtn.innerHTML = "⏸ boyfriend - aeter";
-                musicBtn.style.borderColor = "#00ff99";
-                musicBtn.style.color = "#00ff99";
-            }
-            isPlaying = !isPlaying;
-        });
-    </script>
-<script defer="" src="./pixie_files/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;94c79d4d951745d085049dd7f2bbd8f8&quot;,&quot;r&quot;:1,&quot;server_timing&quot;:{&quot;name&quot;:{&quot;cfCacheStatus&quot;:true,&quot;cfEdge&quot;:true,&quot;cfExtPri&quot;:true,&quot;cfL4&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfSpeedBrain&quot;:true},&quot;location_startswith&quot;:null}}" crossorigin="anonymous"></script>
+musicBtn.onclick = () => {
+    if (isPlaying) {
+        audio.pause();
+        musicBtn.innerHTML = "▶ boyfriend - aeter";
+    } else {
+        audio.play();
+        musicBtn.innerHTML = "⏸ boyfriend - aeter";
+    }
+    isPlaying = !isPlaying;
+};
+</script>
 
-
-
-<script defer="" data-domain="html.cafe" src="./pixie_files/script.js.download"></script>
-
-   <div class="tab-ext-injectable-popup" style="width: 370px; height: 500px; position: fixed; top: -550px; right: 15px; z-index: 2147483647; background: none; border-radius: 10px; overflow: hidden; transition-duration: 0.3s; transition-timing-function: ease-in-out;"><iframe allowtransparency="true" style="width: 100%; height: 100%; border: none; color-scheme: light;" src="./pixie_files/saved_resource.html"></iframe></div></body></html>
+</body>
+</html>
