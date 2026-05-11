@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>mommy.</title>
+<title>the big pix</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;500&display=swap" rel="stylesheet">
 
@@ -11,7 +11,7 @@
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: url('https://media.discordapp.net/attachments/1490566964731580456/1501336166803181598/banner.jpg?ex=69fbb3c3&is=69fa6243&hm=905b1fa7d96b61a56954d63d529d577244f52f6026d8c965d30dae04975d3913&animated=true') center/cover no-repeat fixed;
+    background: url('https://media.discordapp.net/attachments/1483174776598958223/1503512784196075641/oggtag.webp?ex=6a039ee5&is=6a024d65&hm=4714828449eafea98ba29b7ace0c20d64e86dbb24c2b7f354c796b621d9fd355&animated=true') center/cover no-repeat fixed;
     color: white;
 }
 
@@ -171,8 +171,8 @@ body::before {
 
 <!-- INTRO -->
 <div id="intro">
-    <img src="https://media.discordapp.net/attachments/1490566964731580456/1501336166203654215/pixiescoolcat.webp?ex=69fbb3c3&is=69fa6243&hm=3ba8aa3bd750c6159dbb390d61af31822d2fb6ff03a0f22c90d7c0b0f99f6968&animated=true" class="pfp">
-    <div class="username">pixie</div>
+    <img src="https://media.discordapp.net/attachments/1483174776598958223/1503512783906672681/pixiescoolcat.webp?ex=6a039ee5&is=6a024d65&hm=6c76a5b5289c062ef66a8e98a5f243ceb05a2d6abca86321f34afab9a484836e&animated=true" class="pfp">
+    <div class="username">the big pix</div>
     <div class="enter-btn" id="enterBtn">enter</div>
 </div>
 
@@ -182,22 +182,22 @@ body::before {
 
         <!-- LEFT -->
         <div class="left">
-            <img src="https://media.discordapp.net/attachments/1490566964731580456/1501336166203654215/pixiescoolcat.webp?ex=69fbb3c3&is=69fa6243&hm=3ba8aa3bd750c6159dbb390d61af31822d2fb6ff03a0f22c90d7c0b0f99f6968&animated=true" class="main-pfp">
+            <img src="https://media.discordapp.net/attachments/1483174776598958223/1503512783906672681/pixiescoolcat.webp?ex=6a039ee5&is=6a024d65&hm=6c76a5b5289c062ef66a8e98a5f243ceb05a2d6abca86321f34afab9a484836e&animated=true" class="main-pfp">
         </div>
 
         <!-- RIGHT -->
         <div class="right">
-            <div class="name">pixie</div>
+            <div class="name">the big pix</div>
             <div class="tag">@mommy46.</div>
 
             <div class="bio">
-                i thought things were getting better ?<br>
                 brooklyn my baby <3<br>
-                friends - gwegg, snickss, kodaa, sk1rtz, palmtree, valvee, whatdoidoo
+                day 1's - Gweg, Snicks, Valve, Sk1rtz, Koda<br>
+                ires tag seems like a cool game to mod lol
             </div>
 
             <div class="buttons">
-                <div class="btn music" id="musicBtn">⏸ whats the point - s0rrow</div>
+                <div class="btn music" id="musicBtn">⏸ crash - bunii</div>
             </div>
         </div>
 
@@ -215,7 +215,7 @@ const audio = document.getElementById('audioPlayer');
 
 let isPlaying = true;
 
-audio.src = "https://cdn.discordapp.com/attachments/1490566964731580456/1501335449485181128/whats_the_point.mp3?ex=69fbb318&is=69fa6198&hm=1e8af66dfb8aef16b70043f5350ef04627a7133d172d8aaa40c2d571693b7e34&";
+audio.src = "https://cdn.discordapp.com/attachments/1483174776598958223/1503512886973300829/bunii_-_crash_Official_Music_Video.mp3?ex=6a039efe&is=6a024d7e&hm=5a9a777e909026bdcf3b87ae2abeb8de48d0fc2ca47d6c2f127be1eb10d67000&";
 
 enterBtn.onclick = () => {
     intro.style.display = "none";
@@ -226,10 +226,10 @@ enterBtn.onclick = () => {
 musicBtn.onclick = () => {
     if (isPlaying) {
         audio.pause();
-        musicBtn.innerHTML = "▶ whats the point - s0rrow";
+        musicBtn.innerHTML = "▶ crash - bunii";
     } else {
         audio.play();
-        musicBtn.innerHTML = "⏸ whats the point - s0rrow";
+        musicBtn.innerHTML = "⏸ crash - bunii";
     }
     isPlaying = !isPlaying;
 };
