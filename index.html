@@ -188,7 +188,7 @@ body::before {
 
             <div class="bio">
                 single :(<br>
-                twins - gweg, snicks, dre1mer, korps, scrubz, bt, koda, whatdoido<br>
+                twins - gweg, snicks, dre1mer, korps, palmtree, scrubz, bt, koda, whatdoido<br>
             </div>
 
             <div class="buttons">
@@ -213,13 +213,19 @@ let isPlaying = true;
 
 audio.src = "https://cdn.discordapp.com/attachments/1480007166134849698/1505413938987143349/bunii_-_crash_Official_Music_Video.mp3?ex=6a0a897c&is=6a0937fc&hm=fe686d8ac6a691f8baf81dac365f9b69bbdeaf58c315d0177d6000212a4dc66b&";
 
-let views = localStorage.getItem("pixieViews") || 0;
+let views = localStorage.getItem("gunslol_views");
 
-views++;
+if (!views) {
+    views = Math.floor(Math.random() * 9000) + 1000;
+} else {
+    views = parseInt(views) + Math.floor(Math.random() * 3);
+}
 
-localStorage.setItem("pixieViews", views);
+localStorage.setItem("gunslol_views", views);
 
-viewCount.innerText = views;
+let fakeViews = views + Math.floor(Math.random() * 5);
+
+viewCount.innerText = fakeViews.toLocaleString();
 
 enterBtn.onclick = () => {
     intro.style.display = "none";
